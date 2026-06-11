@@ -18,15 +18,39 @@ def render():
                 unsafe_allow_html=True)
 
     # Seletor de mês
-    col_mes, _ = st.columns([1, 3])
-    with col_mes:
-        mes_sel = st.date_input(
-            "Mês de referência",
-            value=date.today().replace(day=1),
-            format="MM/YYYY",
-            label_visibility="visible",
+    meses = [
+    "Janeiro", "Fevereiro", "Março", "Abril",
+    "Maio", "Junho", "Julho", "Agosto",
+    "Setembro", "Outubro", "Novembro", "Dezembro"
+    ]
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        mes_num = st.selectbox(
+        "Mês",
+        range(1, 13),
+        index=date.today().month - 1,
+        format_func=lambda x: meses[x - 1]
         )
-    mes = mes_sel.strftime("%Y-%m")
+
+    with col2:
+        ano = st.selectbox(
+        "Ano",
+        range(2024, 2031),
+        index=2  # ajuste conforme necessário
+        )
+
+    mes = f"{ano}-{mes_num:02d}"
+    # col_mes, _ = st.columns([1, 3])
+    # with col_mes:
+    #    mes_sel = st.date_input(
+    #        "Mês de referência",
+    #        value=date.today().replace(day=1),
+    #        format="MM/YYYY",
+    #        label_visibility="visible",
+    #    )
+    # mes = mes_sel.strftime("%Y-%m")
 
     st.markdown("<hr>", unsafe_allow_html=True)
 

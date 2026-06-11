@@ -1,6 +1,5 @@
 import streamlit as st
 from modules.auth import init_db, login_page, register_page
-from modules.financeiro import init_financeiro_tables
 
 # ── Configuração global da página ──────────────────────────────────────────
 st.set_page_config(
@@ -52,6 +51,10 @@ html, body, [class*="css"] {
 [data-testid="stSidebar"] h2, 
 [data-testid="stSidebar"] h3 {
     color: #FFFFFF !important;
+}
+            
+[data-testid="stSidebarNav"] {
+    display: none;
 }
 
 /* Cards genéricos */
@@ -133,7 +136,6 @@ footer { visibility: hidden; }
 
 # ── Inicialização do banco ──────────────────────────────────────────────────
 init_db()
-init_financeiro_tables()
 
 
 # ── Roteamento de autenticação ─────────────────────────────────────────────

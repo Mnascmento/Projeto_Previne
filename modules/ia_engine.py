@@ -81,6 +81,7 @@ class ResultadoRisco:
     saldo_livre:     float                      # renda - gastos - parcelas
     detalhes:        list[DetalheFeature] = field(default_factory=list)
     motivos:         list[str]            = field(default_factory=list)
+    fatores:         list[dict]           = field(default_factory=list)  #compatibilidade com módulos antigos
 
 
 # ── Funções de score por feature ─────────────────────────────────────────
@@ -192,6 +193,13 @@ def calcular_risco(
             comprometimento=100.0,
             saldo_livre=-(total_gastos + total_parcelas),
             motivos=["Nenhuma renda cadastrada — impossível calcular comprometimento."],
+            fatores=[
+                {
+                "descricao": "Nenhuma renda cadastrada",
+                "peso": 100,
+                "ativado": True,
+                }
+            ]
         )
 
     comprometimento = ((total_gastos + total_parcelas) / renda_total) * 100
@@ -233,6 +241,15 @@ def calcular_risco(
         if d.contribuicao > 2.0 and d.motivo
     ]
 
+    fatores = []
+
+    for detalhe in detalhes:
+        fatores.append({
+        "descricao": detalhe.motivo,
+        "peso": round(detalhe.contribuicao, 1),
+        "ativado": detalhe.contribuicao > 0,
+        })
+
     return ResultadoRisco(
         indice=indice,
         nivel=nivel,
@@ -240,6 +257,7 @@ def calcular_risco(
         saldo_livre=saldo_livre,
         detalhes=detalhes,
         motivos=motivos,
+        fatores=fatores
     )
 
 

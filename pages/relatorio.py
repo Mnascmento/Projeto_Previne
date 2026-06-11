@@ -22,15 +22,44 @@ def render():
                 unsafe_allow_html=True)
 
     # Seletor de mês
-    col_m, _ = st.columns([1, 3])
+    meses = [
+    "Janeiro", "Fevereiro", "Março", "Abril",
+    "Maio", "Junho", "Julho", "Agosto",
+    "Setembro", "Outubro", "Novembro", "Dezembro"
+    ]
+
+    col_m, col_a, _ = st.columns([2, 1, 3])
+
     with col_m:
-        mes_dt = st.date_input(
-            "Selecione o mês",
-            value=date.today().replace(day=1),
-            format="MM/YYYY",
-        )
-    mes = mes_dt.strftime("%Y-%m")
-    mes_label = mes_dt.strftime("%B de %Y").capitalize()
+        mes_num = st.selectbox(
+        "Mês",
+        range(1, 13),
+        index=date.today().month - 1,
+        format_func=lambda x: meses[x - 1]
+    )
+
+    with col_a:
+        ano = st.selectbox(
+        "Ano",
+        range(2024, 2031),
+        index=list(range(2024, 2031)).index(date.today().year)
+    )
+
+    # Formato para consultas no banco
+    mes = f"{ano}-{mes_num:02d}"
+
+    # Formato para exibição
+    mes_label = f"{meses[mes_num - 1]} de {ano}"
+
+    #col_m, _ = st.columns([1, 3])
+    #with col_m:
+    #    mes_dt = st.date_input(
+    #        "Selecione o mês",
+    #        value=date.today().replace(day=1),
+    #        format="MM/YYYY",
+    #    )
+    #mes = mes_dt.strftime("%Y-%m")
+    #mes_label = mes_dt.strftime("%B de %Y").capitalize()
 
     st.markdown("<hr>", unsafe_allow_html=True)
 
@@ -105,14 +134,18 @@ def render():
     with col_g2:
         st.markdown("<div class='section-title'>📉 Fatores de risco</div>",
                     unsafe_allow_html=True)
-        fatores_ativos = [f for f in result.fatores if f["ativado"]]
-        if fatores_ativos:
+        detalhes_ativos = [
+    d for d in result.detalhes
+    if d.contribuicao > 0
+]
+
+        if detalhes_ativos:
             fig2 = go.Figure(go.Bar(
-                y=[f["descricao"][:35] for f in fatores_ativos],
-                x=[f["peso"] for f in fatores_ativos],
+                y=[d.motivo[:40] if d.motivo else d.nome for d in detalhes_ativos],
+                x=[d.contribuicao for d in detalhes_ativos],
                 orientation="h",
                 marker_color=nivel_cor,
-                text=[f"+{f['peso']} pts" for f in fatores_ativos],
+                text=[f"{d.contribuicao:.1f} pts" for d in detalhes_ativos],
                 textposition="outside",
             ))
             fig2.update_layout(
@@ -154,7 +187,7 @@ def render():
         total_parcelas=parcelas,
         gastos_por_cat=gast_cat,
         dividas=dividas,
-        resultado_risco=result,
+        resultado=result,
     )
 
     st.download_button(
