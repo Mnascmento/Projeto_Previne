@@ -1,3 +1,18 @@
+# Previne — dependências do protótipo acadêmico
+# Instale com: pip install -r requirements.txt
+
+# Interface
 streamlit>=1.35.0
+
+# Banco de dados
+sqlalchemy>=2.0.0
+
+# Visualizações
 plotly>=5.20.0
 pandas>=2.0.0
+
+# Testes
+pytest>=8.0.0
+
+# Utilitários (já inclusos na stdlib, listados para clareza)
+# hashlib, pathlib, datetime, json, dataclasses — sem instalação necessária

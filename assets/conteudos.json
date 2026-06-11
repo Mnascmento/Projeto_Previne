@@ -1,0 +1,62 @@
+[
+  {
+    "titulo": "Regra 50-30-20",
+    "corpo": "Divida sua renda em: 50% para necessidades, 30% para desejos e 20% para poupança e dívidas. É um ponto de partida simples e eficaz.",
+    "niveis": ["todos"],
+    "emoji": "📊"
+  },
+  {
+    "titulo": "Método avalanche de dívidas",
+    "corpo": "Pague o mínimo em todas as dívidas e direcione o valor extra para a dívida com MAIOR juros. Você pagará menos no total.",
+    "niveis": ["medio", "alto", "critico"],
+    "emoji": "🏔️"
+  },
+  {
+    "titulo": "Fundo de emergência",
+    "corpo": "Ter de 3 a 6 meses de despesas guardadas evita que imprevistos virem dívidas. Comece com R$ 50/mês e aumente gradualmente.",
+    "niveis": ["baixo", "medio"],
+    "emoji": "🛡️"
+  },
+  {
+    "titulo": "Juros do cartão de crédito",
+    "corpo": "O rotativo do cartão é um dos juros mais altos do mercado — pode passar de 400% ao ano. Pague sempre o valor total da fatura.",
+    "niveis": ["medio", "alto", "critico"],
+    "emoji": "💳"
+  },
+  {
+    "titulo": "Lei do Superendividamento",
+    "corpo": "A Lei 14.181/2021 garante o direito à renegociação de dívidas com proteção ao mínimo existencial. Procure o Procon da sua cidade.",
+    "niveis": ["alto", "critico"],
+    "emoji": "⚖️"
+  },
+  {
+    "titulo": "Compras por impulso",
+    "corpo": "Antes de comprar algo não planejado, espere 48 horas. Se ainda quiser, avalie se cabe no orçamento. Esse hábito economiza muito.",
+    "niveis": ["todos"],
+    "emoji": "🛍️"
+  },
+  {
+    "titulo": "Orçamento base zero",
+    "corpo": "Planeje cada real da sua renda antes de receber: atribua destino a tudo. Ao final, renda - despesas - poupança = 0.",
+    "niveis": ["baixo", "medio"],
+    "emoji": "🎯"
+  },
+  {
+    "titulo": "Negociação de dívidas",
+    "corpo": "Credores preferem receber menos a não receber nada. Proponha pagar à vista com desconto ou parcelas menores — muitos aceitam.",
+    "niveis": ["alto", "critico"],
+    "emoji": "🤝"
+  },
+  {
+    "titulo": "Custo do parcelamento",
+    "corpo": "Parcelar 'sem juros' tem custo embutido no preço. Sempre compare o preço à vista com o total parcelado antes de decidir.",
+    "niveis": ["todos"],
+    "emoji": "🧮"
+  },
+  {
+    "titulo": "Método bola de neve",
+    "corpo": "Pague a menor dívida primeiro para ganhar motivação. Depois aplique o valor liberado na próxima. Psicologicamente mais fácil.",
+    "niveis": ["medio", "alto"],
+    "emoji": "⛄"
+  }
+]
