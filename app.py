@@ -34,7 +34,10 @@ html, body, [class*="css"] {
 }
 
 /* Fundo principal */
-.stApp { background-color: var(--cinza-bg); }
+.stApp { 
+    background-color: var(--cinza-bg); 
+    color: var(--texto-prim);
+        }
 
 /* Sidebar */
 [data-testid="stSidebar"] {
@@ -51,10 +54,31 @@ html, body, [class*="css"] {
 [data-testid="stSidebar"] h2, 
 [data-testid="stSidebar"] h3 {
     color: #FFFFFF !important;
-}
-            
+}       
 [data-testid="stSidebarNav"] {
     display: none;
+}
+            
+/* Label */
+label[data-testid="stWidgetLabel"] {
+    color: var(--texto-prim) !important;
+    font-weight: 600 !important;
+}
+
+/* Tabs */
+button[data-baseweb="tab"] {
+    color: var(--texto-prim) !important;
+}
+button[data-baseweb="tab"][aria-selected="true"] {
+    color: var(--vermelho) !important;
+    font-weight: 600 !important;
+}
+
+/* Expander de Forms */
+.streamlit-expanderHeader,
+[data-testid="stExpander"] summary {
+    color: var(--texto-prim) !important;
+    font-weight: 600 !important;
 }
 
 /* Cards genéricos */
