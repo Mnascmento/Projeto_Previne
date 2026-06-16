@@ -224,8 +224,8 @@ A aplicação busca auxiliar usuários na compreensão de sua situação finance
 
 ---
 
-## Autora
+## Autoras
 
-**Mayara Almeida**
+**Mayara Almeida & Maria da Penha**
 
-Estudante de Análise e Desenvolvimento de Sistemas.
+Estudantes de Análise e Desenvolvimento de Sistemas.
