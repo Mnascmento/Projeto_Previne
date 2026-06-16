@@ -1,76 +1,231 @@
-# 💡 Previsão Inteligente
+# Projeto Previne
 
-App de controle financeiro pessoal com IA preditiva de risco de superendividamento.  
-Desenvolvido como protótipo acadêmico com Streamlit + SQLite.
+## Sobre o Projeto
+
+O Projeto Previne é uma aplicação web desenvolvida em Python com Streamlit voltada para a prevenção do superendividamento e promoção da educação financeira.
+
+A plataforma permite que usuários registrem suas receitas, despesas e dívidas, acompanhem sua situação financeira por meio de indicadores e relatórios, recebam alertas preventivos e tenham acesso a conteúdos educativos que auxiliam na tomada de decisões financeiras mais conscientes.
+
+O sistema foi desenvolvido com foco em acessibilidade, organização financeira pessoal e análise de risco financeiro, oferecendo uma visão consolidada da saúde financeira do usuário.
 
 ---
 
-## Estrutura
+## Funcionalidades
 
-```
-previsao_inteligente/
-├── app.py                  # Ponto de entrada
-├── requirements.txt
-├── data/database.db        # SQLite (criado automaticamente)
+### Autenticação de Usuários
+
+* Cadastro e login de usuários.
+* Controle de sessões.
+* Validação de acesso.
+
+### Gestão Financeira
+
+* Registro de receitas.
+* Registro de despesas.
+* Controle de lançamentos financeiros.
+* Monitoramento do saldo financeiro.
+
+### Controle de Dívidas
+
+* Cadastro de dívidas.
+* Acompanhamento de valores devidos.
+* Visualização consolidada das obrigações financeiras.
+
+### Dashboard Financeiro
+
+* Visão geral da situação financeira.
+* Indicadores e métricas financeiras.
+* Resumo das movimentações registradas.
+
+### Análise Inteligente de Risco
+
+* Avaliação automática da situação financeira.
+* Identificação de possíveis sinais de superendividamento.
+* Classificação do nível de risco financeiro.
+
+### Sistema de Alertas
+
+* Geração de alertas preventivos.
+* Notificações baseadas na análise financeira do usuário.
+* Recomendações para melhoria da saúde financeira.
+
+### Conteúdo Educacional
+
+* Dicas de educação financeira.
+* Orientações para planejamento financeiro.
+* Conteúdo dinâmico armazenado em arquivo JSON.
+
+### Relatórios
+
+* Geração de relatórios financeiros.
+* Consolidação das informações registradas.
+* Apoio à análise da evolução financeira do usuário.
+
+### Histórico Financeiro
+
+* Registro das movimentações realizadas.
+* Consulta de informações anteriores.
+
+---
+
+## Tecnologias Utilizadas
+
+### Linguagem
+
+* Python
+
+### Interface
+
+* Streamlit
+
+### Banco de Dados
+
+* SQLite
+
+### Bibliotecas Principais
+
+* Streamlit
+* Pandas
+* NumPy
+* SQLite3
+
+### Testes
+
+* Pytest
+
+---
+
+## Estrutura do Projeto
+
+```text
+Projeto_Previne/
+│
+├── assets/
+│   └── conteudos.json
+│
+├── data/
+│   └── database.db
+│
+├── models/
+│   ├── __init__.py
+│   └── schemas.py
+│
 ├── modules/
-│   ├── auth.py             # Cadastro e sessão
-│   ├── financeiro.py       # Renda, gastos, dívidas (CRUD)
-│   ├── ia_engine.py        # Cálculo do índice de risco por regras pontuadas
-│   ├── alertas.py          # Geração de alertas e sugestões corretivas
-│   ├── conteudo.py         # Dicas educativas contextualizadas
-│   └── relatorio.py        # Geração de relatório em texto
+│   ├── alertas.py
+│   ├── auth.py
+│   ├── conteudo.py
+│   ├── financeiro.py
+│   ├── historico.py
+│   ├── ia_engine.py
+│   ├── relatorio.py
+│   └── validacoes.py
+│
 ├── pages/
-│   ├── dashboard.py        # Painel principal com gauge de risco
-│   ├── lancamentos.py      # Entrada de rendas e gastos
-│   ├── dividas.py          # Gestão de dívidas e parcelas
-│   └── relatorio.py        # Visualização e download do relatório
-└── assets/conteudos.json   # Base de dicas educativas
+│   ├── dashboard.py
+│   ├── dividas.py
+│   ├── lancamentos.py
+│   └── relatorio.py
+│
+├── tests/
+│   ├── __init__.py
+│   └── test_backend.py
+│
+├── app.py
+├── requirements.txt
+├── README.md
+└── .gitignore
 ```
 
 ---
 
-## Como rodar
+## Organização dos Módulos
+
+| Módulo        | Responsabilidade                         |
+| ------------- | ---------------------------------------- |
+| auth.py       | Autenticação e gerenciamento de usuários |
+| financeiro.py | Controle de receitas, despesas e saldo   |
+| dividas.py    | Gerenciamento de dívidas                 |
+| historico.py  | Histórico de movimentações               |
+| alertas.py    | Geração de alertas financeiros           |
+| ia_engine.py  | Análise de risco financeiro              |
+| conteudo.py   | Carregamento de conteúdos educativos     |
+| relatorio.py  | Emissão de relatórios                    |
+| validacoes.py | Regras de validação dos dados            |
+| schemas.py    | Estruturas e modelos de dados            |
+
+---
+
+## Instalação
+
+### 1. Clonar o repositório
 
 ```bash
-# 1. Crie e ative o ambiente virtual
-python -m venv .venv
-source .venv/bin/activate        # Linux/Mac
-.venv\Scripts\activate           # Windows
+git clone https://github.com/Mnascmento/Projeto_Previne.git
+cd Projeto_Previne
+```
 
-# 2. Instale as dependências
+### 2. Criar ambiente virtual
+
+#### Windows
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+#### Linux/MacOS
+
+```bash
+python -m venv venv
+source venv/bin/activate
+```
+
+### 3. Instalar dependências
+
+```bash
 pip install -r requirements.txt
+```
 
-# 3. Execute o app
+---
+
+## Executando a Aplicação
+
+Inicie o sistema com:
+
+```bash
 streamlit run app.py
 ```
 
-O banco de dados `data/database.db` é criado automaticamente na primeira execução.
+Após a execução, a aplicação ficará disponível no navegador através do endereço fornecido pelo Streamlit.
 
 ---
 
-## Motor de IA (regras pontuadas)
+## Executando os Testes
 
-O índice de risco (0–100) é calculado por 4 fatores:
+Para executar os testes automatizados:
 
-| Fator | Pontos |
-|---|---|
-| Comprometimento ≥ 30% da renda | +10 |
-| Comprometimento ≥ 50% da renda | +20 |
-| Comprometimento ≥ 70% da renda | +30 |
-| Comprometimento ≥ 90% da renda | +40 |
-| Parcelas > 20% da renda | +15 |
-| Parcelas > 40% da renda | +30 |
-| 3+ dívidas ativas | +10 |
-| 5+ dívidas ativas | +20 |
-| Saldo mensal negativo | +20 |
+```bash
+pytest
+```
 
-**Classificação:** 0–29 Baixo · 30–54 Médio · 55–79 Alto · 80–100 Crítico
+Ou:
+
+```bash
+pytest tests/
+```
 
 ---
 
-## Fora do escopo (protótipo)
+## Objetivo do Projeto
 
-- Autenticação robusta / criptografia
-- Open Finance / notificações push
-- Deploy em nuvem
-- Testes automatizados
+O Projeto Previne foi desenvolvido como uma solução tecnológica voltada para a prevenção do superendividamento, utilizando conceitos de desenvolvimento de software, persistência de dados, análise financeira e educação financeira digital.
+
+A aplicação busca auxiliar usuários na compreensão de sua situação financeira e no desenvolvimento de hábitos que contribuam para uma gestão financeira mais saudável e sustentável.
+
+---
+
+## Autora
+
+**Mayara Almeida**
+
+Estudante de Análise e Desenvolvimento de Sistemas.
